@@ -81,7 +81,7 @@ if [ "$COMPILE" ]
 then
 	if [ ! `which yasm` ]
 	then
-		echo 'Yasm not found'
+		echo 'yasm was not found. Please install it with Homebrew.'
 		exit 1
 	fi
 	if [ ! `which pkg-config` ]
@@ -89,12 +89,12 @@ then
 		echo 'pkg-config not found'
 		exit 1
 	fi
-	if [ ! `which gas-preprocessor.pl` ]
-	then
-		echo 'gas-preprocessor.pl not found.'
-		exit 1
+	#if [ ! `which gas-preprocessor.pl` ]
+	#then
+		#echo 'gas-preprocessor.pl not found.'
+		#exit 1
 		#curl -L https://github.com/libav/gas-preprocessor/raw/master/gas-preprocessor.pl -o /usr/local/bin/gas-preprocessor.pl && chmod +x /usr/local/bin/gas-preprocessor.pl
-	fi
+	#fi
 
 	if [ ! -r $SOURCE ]
 	then
@@ -146,9 +146,9 @@ then
 		# force "configure" to use "gas-preprocessor.pl" (FFmpeg 3.3)
 		if [ "$ARCH" = "arm64" ]
 		then
-		    AS="gas-preprocessor.pl -arch aarch64 -- $CC"
+		    AS="perl $SOURCE_ROOT/FFMpeg/gas-preprocessor.pl -arch aarch64 -- $CC"
 		else
-		    AS="gas-preprocessor.pl -- $CC"
+		    AS="perl $SOURCE_ROOT/FFMpeg/gas-preprocessor.pl -- $CC"
 		fi
 
 		CXXFLAGS="$CFLAGS"
