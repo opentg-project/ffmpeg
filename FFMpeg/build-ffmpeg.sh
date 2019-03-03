@@ -26,6 +26,9 @@ THIN="$BUILD_DIR/thin"
 
 PKG_CONFIG="$SOURCE_DIR/pkg-config-wrapper.sh"
 
+# Add plausible Homebrew locations to PATH -- for yasm
+PATH="$HOME/Homebrew/bin:$HOME/homebrew/bin:$HOME/.homebrew/bin:$PATH"
+
 LIB_NAMES="libavcodec libavformat libavutil libswresample"
 
 set -e
